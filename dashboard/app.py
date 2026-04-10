@@ -1,9 +1,10 @@
 import streamlit as st
 import pandas as pd
-import sqlite3
 import plotly.express as px
-import pickle
-import numpy as np
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from data_loader import load_data
 
 # ============================================================
 # WHAT IS STREAMLIT?
@@ -23,16 +24,6 @@ st.set_page_config(
     layout="wide"  # uses full screen width
 )
 
-# --- Load Data from Database ---
-# We use @st.cache_data so data loads only ONCE
-# Without this, it would reload every time you click anything — very slow
-@st.cache_data
-def load_data():
-    conn = sqlite3.connect('data/cricket.db')
-    matches = pd.read_sql_query("SELECT * FROM matches_clean", conn)
-    deliveries = pd.read_sql_query("SELECT * FROM deliveries_clean", conn)
-    conn.close()
-    return matches, deliveries
 
 matches, deliveries = load_data()
 
