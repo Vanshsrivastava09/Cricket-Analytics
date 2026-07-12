@@ -18,7 +18,7 @@ with an interactive dashboard and ML-powered match winner predictor.
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack 
 
 | Tool | Purpose |
 |------|---------|
